@@ -23,29 +23,33 @@ public class Main {
         Teacher teacherArrary[]=initTeacher();
         Student studentArrary[]=initStudent();
         Dto dto=new Dto(studentArrary,teacherArrary);
+        System.out.println("初始化学生和老师：");
         Common.showStudents(studentArrary);
         Common.showTeachers(teacherArrary);
-        Common.firstAssignment(dto);
+        Common.firstAssignment(dto,4);
+        System.out.println("第一轮互选结果：");
         Common.showStudents(studentArrary);
         Common.showTeachers(teacherArrary);
         Common.secondAssignment(dto,rankingExpect,range,teacherAll,stuAll);
+        System.out.println("第二轮互选结果：");
         Common.showTeachers(teacherArrary);
         Common.showStudents(studentArrary);
+        Common.matchRateAndVarianceMean(dto,rankingExpect);
 
 
     }
     //初始化变量参数
-   static void initDate(){
-      stuAll=80;
-      teacherAll=8;
-      rankingExpect=40;
-      expectDeviation=10;
-      vf=0.2f;
-      range=round(stuAll*vf);
-      stuMax=stuAll/teacherAll;
+    static void initDate(){
+        stuAll=80;
+        teacherAll=8;
+        rankingExpect=40;
+        expectDeviation=10;
+        vf=0.2f;
+        range=round(stuAll*vf);
+        stuMax=stuAll/teacherAll;
     }
     //初始化教师数组
-   static Teacher[] initTeacher(){
+    static Teacher[] initTeacher(){
         int stuNumber=0;
         stuSelected=new int[stuMax];
         Teacher teacherArrary[]=new Teacher[teacherAll];
@@ -55,16 +59,16 @@ public class Main {
         return teacherArrary;
     }
     //初始化学生数组
-   static Student[] initStudent(){
-      Student studentArrary[]=new Student[stuAll];
-      boolean status=false;
+    static Student[] initStudent(){
+        Student studentArrary[]=new Student[stuAll];
+        boolean status=false;
         Random random=new Random();
 
-       for(int j=0;j<stuAll;j++)
-       {
-           int volunNumber=random.nextInt(teacherAll);
+        for(int j=0;j<stuAll;j++)
+        {
+            int volunNumber=random.nextInt(teacherAll);
             studentArrary[j]=new Student(volunNumber,j,status);
-       }
-       return studentArrary;
+        }
+        return studentArrary;
     }
 }

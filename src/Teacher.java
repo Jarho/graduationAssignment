@@ -9,14 +9,14 @@ public class Teacher {
     {
 
     }
-     Teacher(int stuMax,int stuNumber,int meanStu,int teacherNumber)
+    Teacher(int stuMax,int stuNumber,int meanStu,int teacherNumber)
     {
         this.stuMax=stuMax;
         this.stuNumber=stuNumber;
         this.meanStu=meanStu;
         this.teacherNumber=teacherNumber;
     }
-     Teacher(int stuMax,int stuNumber,int teacherNumber,int[] stuSelected)
+    Teacher(int stuMax,int stuNumber,int teacherNumber,int[] stuSelected)
     {
         this.stuMax=stuMax;
         this.stuNumber=stuNumber;
@@ -62,6 +62,7 @@ public class Teacher {
 
         return "Teacher [教师编号=" + teacherNumber + ", 可带学生人数=" + stuMax + ",当前学生人数="+stuNumber+",已选学生="+selected+ ", 学生平均排名=" + meanStu +"]";
     }
+    //选择学生后，更新当前学生人数，平均排名和当前学生
     void updataTeacher(int ranking)
     {
         if (stuNumber==0||meanStu==0)
@@ -78,18 +79,18 @@ public class Teacher {
             selected="无";
         }else {
 
-                if (stuNumber==1) {
-                    selected = ""+ranking;
-                }else {
-                    selected = selected + "," + ranking;
-                }
+            if (stuNumber==1) {
+                selected = ""+ranking;
+            }else {
+                selected = selected + "," + ranking;
+            }
 
         }
         for(int i=0;i<stuNumber;i++){
             for(int j=i+1;j<stuNumber;j++)
-            if(stuSelected[i]==stuSelected[j]){
-                break;
-            }
+                if(stuSelected[i]==stuSelected[j]){
+                    break;
+                }
 
         }
     }
